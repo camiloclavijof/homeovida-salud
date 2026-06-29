@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Enlace a Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Homeovida - Salud Natural</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* -------------------------- IMAGEN DE FONDO PARA TODA LA PÁGINA -------------------------- */
+        body {
+            background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
+                        url('fondo-pagina.png') no-repeat center center fixed;
+            background-size: cover;
+            color: #2c2c2c;
+            line-height: 1.6;
+        }
+
+        /* 🎨 Colores según el estilo */
+        :root {
+            --verde-principal: #2e7d32;
+            --verde-claro: #43a047;
+            --verde-suave: #e8f5e9;
+            --blanco: #ffffff;
+            --texto: #333333;
+            --borde: #c8e6c9;
+        }
+
+        /* -------------------------- ENCABEZADO -------------------------- */
+        header {
+            background: linear-gradient(180deg, var(--verde-principal), var(--verde-claro));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-encabezado {
+            width: 90px;
+            height: auto;
+            border-radius: 50%;
+            background: white;
+            padding: 6px;
+        }
+
+        .texto-encabezado h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .texto-encabezado p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* -------------------------- MENÚ -------------------------- */
+        nav {
+            background-color: var(--verde-principal);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background-color: var(--verde-claro);
+        }
+
+        /* -------------------------- CONTENEDOR GENERAL -------------------------- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* -------------------------- ESTILOS DE SECCIONES -------------------------- */
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.92);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--verde-principal);
+        }
+
+        .titulo-seccion {
+            color: var(--verde-principal);
+            font-size: 1.7rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--verde-suave);
+            margin-bottom: 1.8rem;
+            text-align: center;
+        }
+
+        /* 👨‍⚕️ PROFESIONAL */
+        #profesional {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .foto-profesional {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--verde-suave);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .datos-profesional {
+            flex: 1;
+            min-width: 280px;
+            font-size: 1.05rem;
+        }
+
+        /* AVISO CITA */
+        .agenda-cita {
+            background: linear-gradient(90deg, var(--verde-principal), var(--verde-claro));
+            color: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* -------------------------- GALERÍA Y VIDEOS AJUSTADOS -------------------------- */
+        .galeria-instalaciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1.5rem;
+            justify-items: center;
+        }
+
+        /* ✅ ESTILO PARA VIDEOS MÁS PEQUEÑOS */
+        .galeria-instalaciones video {
+            max-width: 420px;  /* Ancho máximo reducido */
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .galeria-instalaciones img {
+            max-width: 420px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid var(--borde);
+        }
+
+        /* ⚠️ AVISO LEGAL */
+        #aviso {
+            background-color: rgba(255, 253, 245, 0.95);
+            border-left: 5px solid #f57c00;
+        }
+
+        /* 🛒 PRODUCTOS */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.2rem;
+        }
+
+        .tarjeta-producto {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            padding: 2rem;
+            border-top: 5px solid var(--verde-principal);
+            transition: transform 0.2s ease;
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-5px);
+        }
+
+        .tarjeta-producto h3 {
+            color: var(--verde-principal);
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 2px solid var(--verde-suave);
+        }
+
+        .galeria {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .galeria img {
+            max-width: 220px;
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid var(--borde);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+
+        .datos ul {
+            padding-left: 1.8rem;
+            margin: 1rem 0;
+        }
+
+        .datos li {
+            margin-bottom: 0.6rem;
+        }
+
+        .info-cientifica {
+            background: rgba(232, 245, 233, 0.95);
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--verde-claro);
+        }
+
+        .contacto-producto {
+            background: var(--verde-principal);
+            color: white;
+            padding: 0.9rem;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* CONTACTO */
+        #contacto p {
+            margin: 0.7rem 0;
+            font-size: 1.05rem;
+        }
+
+        /* BOTÓN WHATSAPP */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(232, 245, 233, 0.95);
+            color: var(--verde-principal);
+            font-weight: 500;
+        }
+
+        /* ADAPTACIÓN A CELULARES */
+        @media (max-width: 920px) {
+            .grid-productos {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                gap: 1rem;
+                flex-direction: column;
+            }
+
+            #profesional {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .galeria-instalaciones video {
+                max-width: 100%;
+            }
+        }
+
+        /* Iconos de Redes Sociales */
+/* Contenedor de redes sociales */
+.redes-sociales {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+/* Estilo común para todos los botones */
+.redes-sociales a {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+}
+
+.redes-sociales a:hover {
+    transform: scale(1.1);
+}
+
+/* Colores de cada red */
+.whatsapp { background-color: #25d366; }
+.facebook { background-color: #1877f2; }
+.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.tiktok { background-color: #000000; }
+
+
+/* Redes sociales en el pie de página */
+.redes-footer {
+    margin: 1.2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.redes-footer a {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.redes-footer a:hover {
+    transform: scale(1.1);
+}
+
+/* Colores de cada red */
+.red-footer-whatsapp { background-color: #25d366; }
+.red-footer-facebook { background-color: #1877f2; }
+.red-footer-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.red-footer-tiktok { background-color: #000000; }
+
+/* Información del desarrollador */
+.info-desarrollador {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #444444;
+}
+
+.info-desarrollador a {
+    color: #2e7d32;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.info-desarrollador a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para la sección de Testimonios */
+#testimonios {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    border-left: 5px solid var(--verde-principal);
+}
+
+.grid-testimonios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.tarjeta-testimonio {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    padding: 1.8rem;
+    border-top: 5px solid var(--verde-claro);
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-testimonio:hover {
+    transform: translateY(-5px);
+}
+
+.estrellas {
+    color: #f59e0b;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.texto-testimonio {
+    font-style: italic;
+    color: #444;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+.nombre-cliente {
+    font-weight: bold;
+    color: var(--verde-principal);
+    font-size: 1.05rem;
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo-homeovida.png" alt="Logo Homeovida" class="logo-encabezado">
+    <div class="texto-encabezado">
+        <h1>Homeovida</h1>
+        <p>Salud Natural en Casa</p>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#profesional">Profesional</a></li>
+        <li><a href="#elaboracion">Elaboración Propia</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#testimonios">Testimonios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+    <section id="profesional">
+        <img src="foto-profesional.jpg" alt="Foto del profesional" class="foto-profesional">
+        <div class="datos-profesional">
+            <h2 class="titulo-seccion">Profesional de la Salud</h2>
+            <p><strong>Nombre completo:</strong> Dr. / Dra. [Tu nombre aquí]</p>
+            <p><strong>Especialidad:</strong> Medicina Natural y Alternativa</p>
+            <p><strong>Registro Profesional:</strong> [Tu número de registro]</p>
+            <p><strong>Ubicación:</strong> Villavicencio, Meta - Colombia</p>
+            <p><strong>Teléfonos:</strong> 310 689 5103 • 322 703 6371</p>
+            <p><strong>Horario de atención:</strong> Lunes a Sábado de 8:00 AM a 6:00 PM</p>
+        </div>
+    </section>
+
+    <div class="agenda-cita">
+        📅 ¡Agenda tu cita! Atención personalizada para tu bienestar
+    </div>
+
+    <section id="elaboracion">
+        <h2 class="titulo-seccion">Elaboración Propia</h2>
+        <p>Todos nuestros productos son elaborados artesanalmente bajo estrictas normas de higiene y control de calidad. Seleccionamos materias primas 100% naturales para conservar todas sus propiedades activas y garantizar un producto seguro y confiable para tu salud.</p>
+        <div class="galeria-instalaciones">
+            <div>
+                <video src="video-elaboracion.mp4" controls>
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                <p style="text-align:center; margin-top:0.5rem;">Proceso de elaboración</p>
+            </div>
+            <div>
+                <video src="productos.mp4" controls>
+                    Tu navegador no soporta la reproducción de video.
+                </video>
+                <p style="text-align:center; margin-top:0.5rem;">Nuestros productos</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="aviso">
+        <h3>Aviso Informativo Importante</h3>
+        <p>Estos productos son suplementos alimenticios naturales, no constituyen medicamentos ni sustituyen el diagnóstico, pronóstico o tratamiento médico profesional. No están destinados a curar, tratar o prevenir enfermedades. En Colombia se rigen por el Decreto 1737 de 2011. Consulta siempre a tu médico antes de iniciar cualquier suplementación.</p>
+    </section>
+
+    <section id="productos">
+        <h2 class="titulo-seccion">Nuestros Productos Naturales</h2>
+        <div class="grid-productos">
+
+            <!-- CURCUMINA -->
+            <div class="tarjeta-producto">
+                <h3>Curcumina + Curcuminoides</h3>
+                <div class="galeria">
+                    <img src="curcumina.png" alt="Cúrcuma">
+                    <img src="curcuma.jpeg" alt="Cúrcuma">
+                </div>
+                <div class="datos">
+                    <p><strong>Descripción:</strong> Suplemento natural elaborado con extracto estandarizado de cúrcuma.</p>
+                    <ul>
+                        <li>✅ Ayuda en procesos inflamatorios, artritis, artrosis y osteoporosis</li>
+                        <li>✅ Potente acción antioxidante</li>
+                        <li>Formato: Polvo, sobres o cápsulas</li>
+                        <li>Conservación: Lugar fresco, seco y protegido de la luz</li>
+                    </ul>
+                </div>
+                <div class="info-cientifica">
+                    <strong>Información:</strong> La curcumina es el compuesto activo principal de la cúrcuma, reconocido por sus propiedades para aliviar molestias articulares.
+                </div>
+                <div class="contacto-producto">📞 Más información: 310 689 5103</div>
+            </div>
+
+            <!-- AJO -->
+            <div class="tarjeta-producto">
+                <h3>Ajo</h3>
+                <div class="galeria">
+                    <img src="ajo.png" alt="Ajo natural">
+                </div>
+                <div class="datos">
+                    <p><strong>Descripción:</strong> Suplemento natural elaborado con ajo de alta calidad.</p>
+                    <ul>
+                        <li>✅ Ayuda a regular la tensión arterial, colesterol y triglicéridos</li>
+                        <li>✅ Protege la salud cardiovascular</li>
+                        <li>Formato: Cápsulas o extracto</li>
+                        <li>Conservación: Lugar fresco y seco</li>
+                    </ul>
+                </div>
+                <div class="info-cientifica">
+                    <strong>Información:</strong> Contiene alicina, un compuesto que favorece la circulación y reduce factores de riesgo cardíaco.
+                </div>
+                <div class="contacto-producto">📞 Más información: 310 689 5103</div>
+            </div>
+
+            <!-- ANAMÚ -->
+            <div class="tarjeta-producto">
+                <h3>Anamú</h3>
+                <div class="galeria">
+                    <img src="anamu.png" alt="Planta Anamú">
+                </div>
+                <div class="datos">
+                    <p><strong>Descripción:</strong> Complemento natural elaborado con la planta medicinal de Anamú.</p>
+                    <ul>
+                        <li>✅ Acción antioxidante y apoyo al sistema inmune</li>
+                        <li>✅ Propiedades antiparasitarias y antiinflamatorias</li>
+                        <li>Formato: Polvo o cápsulas</li>
+                        <li>Conservación: Lugar fresco y protegido de humedad</li>
+                    </ul>
+                </div>
+                <div class="info-cientifica">
+                    <strong>Información:</strong> Planta tradicionalmente utilizada para fortalecer las defensas y apoyar el organismo ante infecciones.
+                </div>
+                <div class="contacto-producto">📞 Más información: 310 689 5103</div>
+            </div>
+
+            <!-- MANÍ + MAGNESIO -->
+            <div class="tarjeta-producto">
+                <h3>Maní + Sales de Magnesio</h3>
+                <div class="galeria">
+                    <img src="mani.png" alt="Maní y Sales de Magnesio">
+                </div>
+                <div class="datos">
+                    <p><strong>Descripción:</strong> Mezcla natural equilibrada de maní y sales de magnesio.</p>
+                    <ul>
+                        <li>✅ Fortalece músculos, huesos y sistema nervioso</li>
+                        <li>✅ Ayuda a reducir calambres y fatiga</li>
+                        <li>✅ Refuerza el sistema inmune</li>
+                        <li>Formato: Polvo o sobres</li>
+                    </ul>
+                </div>
+                <div class="info-cientifica">
+                    <strong>Información:</strong> El magnesio es esencial para más de 300 funciones corporales; el maní aporta proteínas y nutrientes esenciales.
+                </div>
+                <div class="contacto-producto">📞 Más información: 310 689 5103</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Sección de Testimonios -->
+<section id="testimonios">
+    <h2 class="titulo-seccion">Lo que dicen nuestros clientes</h2>
+    <div class="grid-testimonios">
+        <div class="tarjeta-testimonio">
+            <div class="estrellas">★★★★★</div>
+            <p class="texto-testimonio">"Llevo tres meses usando la curcumina y he notado una gran mejoría en mis dolores articulares. Producto de excelente calidad y muy buen trato."</p>
+            <p class="nombre-cliente">— María González</p>
+        </div>
+        <div class="tarjeta-testimonio">
+            <div class="estrellas">★★★★★</div>
+            <p class="texto-testimonio">"El complemento de maní con magnesio me ayudó mucho con los calambres nocturnos. Es natural, suave y efectivo. Lo recomiendo totalmente."</p>
+            <p class="nombre-cliente">— Carlos Méndez</p>
+        </div>
+        <div class="tarjeta-testimonio">
+            <div class="estrellas">★★★★★</div>
+            <p class="texto-testimonio">"La atención es muy personalizada y los productos son elaborados con mucho cuidado. Me siento más saludable y con más energía desde que los consumo."</p>
+            <p class="nombre-cliente">— Ana Ruiz</p>
+        </div>
+    </div>
+</section>
+
+    <section id="contacto">
+        <h2 class="titulo-seccion">Contáctanos</h2>
+        <p><strong>Marca:</strong> Homeovida - Salud Natural</p>
+        <p><strong>Teléfonos:</strong> 310 689 5103 • 322 703 6371</p>
+        <p><strong>Ubicación:</strong> Villavicencio, Meta - Colombia</p>
+        <p><strong>Correo electrónico:</strong> [Tu correo aquí]</p>
+        <p><strong>Horario de atención:</strong> Lunes a Sábado de 8:00 AM a 6:00 PM</p>
+    </section>
+
+</div>
+
+<!-- Botones Redes Sociales -->
+<!-- Botones de Redes Sociales con Font Awesome -->
+<div class="redes-sociales">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/573106895103?text=Hola,%20me%20interesan%20los%20productos%20de%20Homeovida" target="_blank" class="whatsapp" title="Escribir por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Facebook -->
+    <a href="https://facebook.com/TU_PAGINA" target="_blank" class="facebook" title="Visitar Facebook">
+        <i class="fa-brands fa-facebook-f"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/TU_PERFIL" target="_blank" class="instagram" title="Visitar Instagram">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+
+    <!-- TikTok -->
+    <a href="https://tiktok.com/@TU_USUARIO" target="_blank" class="tiktok" title="Visitar TikTok">
+        <i class="fa-brands fa-tiktok"></i>
+    </a>
+</div>
+
+<footer>
+    <p>&copy; 2026 Homeovida - Salud Natural | Todos los derechos reservados</p>
+
+    <!-- Redes sociales en el footer -->
+    <div class="redes-footer">
+        <a href="https://wa.me/573106895103?text=Hola,%20me%20interesan%20los%20productos%20de%20Homeovida" target="_blank" class="red-footer-whatsapp" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://facebook.com/TU_PAGINA" target="_blank" class="red-footer-facebook" title="Facebook">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://instagram.com/TU_PERFIL" target="_blank" class="red-footer-instagram" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@TU_USUARIO" target="_blank" class="red-footer-tiktok" title="TikTok">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+    </div>
+
+    <!-- Información del desarrollador -->
+    <div class="info-desarrollador">
+        <p>Desarrollado por: <strong>Ing. Camilo Andrés Clavijo Fernández</strong></p>
+    </div>
+</footer>
+
+</body>
+</html>
