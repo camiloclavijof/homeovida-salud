@@ -6,6 +6,7 @@
     <!-- Enlace a Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Homeovida - Salud Natural</title>
+    <link rel="icon" type="image/png" href="logo-homeovida.png">
     <style>
         * {
             margin: 0;
@@ -18,7 +19,7 @@
         /* -------------------------- IMAGEN DE FONDO PARA TODA LA PÁGINA -------------------------- */
         body {
             background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), 
-                        url('fondo-pagina.png') no-repeat center center fixed;
+                        url('05_curcuma.png') no-repeat center center fixed;
             background-size: cover;
             color: #2c2c2c;
             line-height: 1.6;
@@ -295,13 +296,18 @@
             transform: scale(1.1);
         }
 
-        /* PIE DE PÁGINA */
+        /* -------------------------- PIE DE PÁGINA AJUSTADO -------------------------- */
         footer {
             text-align: center;
-            padding: 1.5rem;
+            padding: 0.8rem 1.5rem; /* Reducimos el espacio para que no sea tan alto */
             background: rgba(232, 245, 233, 0.95);
             color: var(--verde-principal);
             font-weight: 500;
+        }
+
+        footer p {
+            margin: 0.3rem 0; /* Espacio pequeño entre líneas */
+            line-height: 1.4;
         }
 
         /* ADAPTACIÓN A CELULARES */
@@ -373,7 +379,7 @@
 /* Redes sociales en el pie de página */
 /* Redes en el footer (más discretas) */
 .redes-footer {
-    margin: 1.2rem 0;
+    margin: 0.6rem 0; /* Espacio reducido */
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -403,10 +409,11 @@
 .red-footer-facebook { background-color: #1877f2; }
 .red-footer-instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
 .red-footer-tiktok { background-color: #000000; }
+
 /* Información del desarrollador */
 .info-desarrollador {
-    margin-top: 1.5rem;
-    font-size: 0.95rem;
+    margin-top: 0.6rem; /* Espacio reducido */
+    font-size: 0.9rem;
     color: #444444;
 }
 
@@ -516,14 +523,13 @@ nav ul {
     }
 }
 
-/* Estilo general para todos los textos con efecto */
 /* Estilo efecto máquina de escribir - igual que el ejemplo */
 /* Estilo base para todas las frases */
 .texto-escritura {
   font-size: 1.3rem;
   font-weight: 500;
   line-height: 1.6;
-  margin: 1rem 0;
+  margin: 0.4rem 0; /* Espacio reducido para no separar demasiado */
   position: relative;
   display: inline-block;
   min-height: 1.8rem;
@@ -658,8 +664,8 @@ nav ul {
             <div class="tarjeta-producto">
                 <h3>Curcumina + Curcuminoides</h3>
                 <div class="galeria">
-                    <img src="curcumina.png" alt="Cúrcuma">
-                    <img src="curcuma.jpeg" alt="Cúrcuma">
+                    <img src="04_producto_capsulas.png" alt="Cúrcuma">
+                    <img src="03_producto_sobres.png" alt="Cúrcuma">
                 </div>
                 <div class="datos">
                     <p><strong>Descripción:</strong> Suplemento natural elaborado con extracto estandarizado de cúrcuma.</p>
@@ -680,7 +686,7 @@ nav ul {
             <div class="tarjeta-producto">
                 <h3>Ajo</h3>
                 <div class="galeria">
-                    <img src="ajo.png" alt="Ajo natural">
+                    <img src="01_ajo.png" alt="Ajo natural">
                 </div>
                 <div class="datos">
                     <p><strong>Descripción:</strong> Suplemento natural elaborado con ajo de alta calidad.</p>
@@ -701,7 +707,7 @@ nav ul {
             <div class="tarjeta-producto">
                 <h3>Anamú</h3>
                 <div class="galeria">
-                    <img src="anamu.png" alt="Planta Anamú">
+                    <img src="02_planta.png" alt="Planta Anamú">
                 </div>
                 <div class="datos">
                     <p><strong>Descripción:</strong> Complemento natural elaborado con la planta medicinal de Anamú.</p>
@@ -722,7 +728,7 @@ nav ul {
             <div class="tarjeta-producto">
                 <h3>Maní + Sales de Magnesio</h3>
                 <div class="galeria">
-                    <img src="mani.png" alt="Maní y Sales de Magnesio">
+                    <img src="mani2.png" alt="Maní y Sales de Magnesio">
                 </div>
                 <div class="datos">
                     <p><strong>Descripción:</strong> Mezcla natural equilibrada de maní y sales de magnesio.</p>
@@ -824,6 +830,13 @@ nav ul {
             <i class="fa-brands fa-tiktok"></i>
         </a>
     </div>
+
+    <!-- Información del desarrollador -->
+    <div class="info-desarrollador">
+        <p>Desarrollado por: <strong>Ing. Camilo Andrés Clavijo Fernández</strong></p>
+    </div>
+</footer>
+
 <script>
 const menuBtn = document.getElementById('menuBtn');
 const menuLista = document.getElementById('menuLista');
@@ -872,11 +885,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 </script>
-    <!-- Información del desarrollador -->
-    <div class="info-desarrollador">
-        <p>Desarrollado por: <strong>Ing. Camilo Andrés Clavijo Fernández</strong></p>
-    </div>
-</footer>
 
 </body>
 </html>
