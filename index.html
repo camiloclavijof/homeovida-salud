@@ -331,18 +331,7 @@
                 max-width: 100%;
             }
         }
-/* Ajuste fino del menú en móviles */
-@media (max-width: 480px) {
-    nav ul li a {
-        padding: 0.9rem 1.2rem; /* Un poquito más de espacio interno */
-        font-size: 1rem; /* Tamaño de letra ideal */
-    }
 
-    .menu-toggle {
-        padding: 0.9rem 1.2rem;
-        font-size: 1.3rem;
-    }
-}
         /* Iconos de Redes Sociales */
 /* Contenedor de redes sociales */
 .redes-sociales {
@@ -526,6 +515,58 @@ nav ul {
         border-top: 1px solid var(--verde-claro);
     }
 }
+
+/* Estilo general para todos los textos con efecto */
+/* Estilo efecto máquina de escribir - igual que el ejemplo */
+/* Estilo base para todas las frases */
+.texto-escritura {
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.6;
+  margin: 1rem 0;
+  position: relative;
+  display: inline-block;
+  min-height: 1.8rem;
+}
+
+/* Cursor parpadeante general */
+.texto-escritura::after {
+  content: "|";
+  margin-left: 2px;
+  animation: parpadeo 0.7s infinite;
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* --- AQUÍ LA DIFERENCIA DE COLORES --- */
+
+/* 🔹 Para frases EN EL ENCABEZADO (fondo verde) → letra y cursor BLANCOS */
+.texto-escritura.header {
+  color: #ffffff;
+}
+.texto-escritura.header::after {
+  color: #ffffff;
+}
+
+/* 🔹 Para frases EN EL RESTO DE LA PÁGINA (fondo claro) → letra y cursor VERDES */
+.texto-escritura.normal {
+  color: #2e7d32;
+}
+.texto-escritura.normal::after {
+  color: #2e7d32;
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+  .texto-escritura {
+    font-size: 1.1rem;
+    display: block;
+    text-align: center;
+  }
+}
     </style>
 </head>
 <body>
@@ -535,7 +576,12 @@ nav ul {
     <div class="texto-encabezado">
         <h1>Homeovida</h1>
         <p>Salud Natural en Casa</p>
+        
     </div>
+    
+    <div>
+  <p class="texto-escritura header" data-texto="Bienvenido a Homeovida Salud Natural | Tu aliado en bienestar integral"></p>
+</div>
 </header>
 
 <nav>
@@ -548,6 +594,8 @@ nav ul {
         <li><a href="#contacto">Contacto</a></li>
     </ul>
 </nav>
+
+
 
 <div class="container">
 
@@ -570,6 +618,10 @@ nav ul {
 
     <section id="elaboracion">
         <h2 class="titulo-seccion">Elaboración Propia</h2>
+        <div>
+  <h3>Proceso de Elaboración</h3>
+  <p class="texto-escritura normal" data-texto="Cuidamos cada paso para conservar todas las propiedades de lo natural"></p>
+</div>
         <p>Todos nuestros productos son elaborados artesanalmente bajo estrictas normas de higiene y control de calidad. Seleccionamos materias primas 100% naturales para conservar todas sus propiedades activas y garantizar un producto seguro y confiable para tu salud.</p>
         <div class="galeria-instalaciones">
             <div>
@@ -594,6 +646,12 @@ nav ul {
 
     <section id="productos">
         <h2 class="titulo-seccion">Nuestros Productos Naturales</h2>
+        <div>
+  <h3>Nuestros Productos</h3>
+  <p class="texto-escritura normal" data-texto="Elaborados con ingredientes 100% naturales, seleccionados para cuidar tu salud"></p>
+</div>
+
+<br>
         <div class="grid-productos">
 
             <!-- CURCUMINA -->
@@ -687,6 +745,10 @@ nav ul {
     <!-- Sección de Testimonios -->
 <section id="testimonios">
     <h2 class="titulo-seccion">Lo que dicen nuestros clientes</h2>
+    <div>
+  <h3>Lo que dicen nuestros clientes</h3>
+  <p class="texto-escritura normal" data-texto="La confianza de quienes nos eligen es nuestra mayor satisfacción"></p>
+</div>
     <div class="grid-testimonios">
         <div class="tarjeta-testimonio">
             <div class="estrellas">★★★★★</div>
@@ -743,6 +805,9 @@ nav ul {
 
 <footer>
     <p>&copy; 2026 Homeovida - Salud Natural | Todos los derechos reservados</p>
+    <div>
+  <p class="texto-escritura" data-texto="Atendemos en Villavicencio, Meta | Lunes a Sábado de 8:00 AM a 6:00 PM"></p>
+</div>
 
     <!-- Redes sociales en el footer -->
     <div class="redes-footer">
@@ -774,6 +839,37 @@ enlacesMenu.forEach(enlace => {
     enlace.addEventListener('click', function() {
         menuLista.classList.remove('active');
     });
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const elementos = document.querySelectorAll(".texto-escritura");
+  const velocidad = 45;       // Velocidad al escribir
+  const esperaTotal = 3000;   // Tiempo que se ve la frase completa antes de repetir (3 segundos)
+
+  elementos.forEach(el => {
+    const texto = el.getAttribute("data-texto");
+    let indice = 0;
+
+    function escribir() {
+      if (indice < texto.length) {
+        // Escribe letra por letra
+        el.textContent = texto.substring(0, indice + 1);
+        indice++;
+        setTimeout(escribir, velocidad);
+      } else {
+        // Cuando termina: espera un tiempo y reinicia todo de golpe
+        setTimeout(() => {
+          indice = 0;
+          el.textContent = ""; // Se borra entero de una sola vez
+          escribir();          // Vuelve a empezar
+        }, esperaTotal);
+      }
+    }
+
+    // Inicia la animación
+    escribir();
+  });
 });
 </script>
     <!-- Información del desarrollador -->
