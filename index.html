@@ -747,7 +747,14 @@ nav ul {
             <i class="fa-brands fa-tiktok"></i>
         </a>
     </div>
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const menuLista = document.getElementById('menuLista');
 
+menuBtn.addEventListener('click', function() {
+    menuLista.classList.toggle('active');
+});
+</script>
     <!-- Información del desarrollador -->
     <div class="info-desarrollador">
         <p>Desarrollado por: <strong>Ing. Camilo Andrés Clavijo Fernández</strong></p>
