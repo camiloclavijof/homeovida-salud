@@ -3,525 +3,983 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Homeovida - Salud Natural y bienestar integral en Villavicencio, Meta. Productos elaborados con ingredientes 100% naturales.">
-    <meta name="author" content="Ing. Camilo Andrés Clavijo Fernández">
-    <!-- Enlace a Iconos -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Homeovida - Salud Natural</title>
     <link rel="icon" type="image/png" href="logo-homeovida.png">
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* ---------- REGLAS GENERALES ---------- */
+        :root {
+            --verde-oscuro: #1b5e20;
+            --verde-principal: #2e7d32;
+            --verde-claro: #4caf50;
+            --verde-fondo: #f4f9f4;
+            --naranja-alerta: #e65100;
+            --texto-oscuro: #2c3e50;
+            --texto-mutado: #5a6c7d;
+            --blanco: #ffffff;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 15px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Outfit', sans-serif;
             scroll-behavior: smooth;
         }
 
-        :root {
-            --verde-principal: #2e7d32;
-            --verde-claro: #43a047;
-            --verde-suave: #e8f5e9;
-            --verde-oscuro: #1b5e20;
-            --naranja-acento: #f57c00;
-            --fondo-base: #ffffff;
-            --texto-principal: #263238;
-            --texto-secundario: #546e7a;
-            --borde-suave: #c8e6c9;
-            --sombra-ligera: 0 2px 8px rgba(0,0,0,0.08);
-            --sombra-media: 0 4px 12px rgba(0,0,0,0.12);
-            --radio-borde: 12px;
-        }
-
         body {
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                        url('05_curcuma.png') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--texto-principal);
-            line-height: 1.65;
+            background-color: var(--verde-fondo);
+            background-image: radial-gradient(rgba(46, 125, 50, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+            color: var(--texto-oscuro);
+            line-height: 1.6;
         }
 
-        .contenedor-principal {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1.2rem;
+            padding: 0 1.5rem;
         }
 
-        /* ---------- ENCABEZADO ---------- */
+        /* -------------------------- ENCABEZADO COMPACTO -------------------------- */
         header {
-            background: linear-gradient(135deg, var(--verde-principal), var(--verde-claro));
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-principal));
+            color: var(--blanco);
+            padding: 1.2rem 1rem;
+            position: relative;
+        }
+
+        .header-content {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 1.5rem;
-            box-shadow: var(--sombra-media);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 0.5rem;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .logo-encabezado {
-            width: 95px;
-            height: auto;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
-            background: white;
-            padding: 6px;
-            box-shadow: var(--sombra-ligera);
+            background: var(--blanco);
+            padding: 4px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
         }
 
         .texto-encabezado h1 {
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
-            margin-bottom: 0.4rem;
-            letter-spacing: 0.5px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 1.1;
         }
 
         .texto-encabezado p {
-            font-size: 1.1rem;
-            opacity: 0.94;
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
         }
 
-        /* ---------- NAVEGACIÓN FIJA ---------- */
+        /* -------------------------- NAVEGACIÓN -------------------------- */
         nav {
-            background-color: var(--verde-principal);
-            padding: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
             position: sticky;
             top: 0;
-            z-index: 999;
-            box-shadow: var(--sombra-ligera);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(46, 125, 50, 0.1);
         }
 
-        .menu-boton {
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            color: var(--verde-principal);
+            font-size: 1.2rem;
+            text-decoration: none;
             display: none;
-            background: transparent;
-            color: white;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
             border: none;
-            font-size: 1.4rem;
-            padding: 1rem 1.5rem;
-            width: 100%;
-            text-align: left;
+            color: var(--verde-principal);
+            font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 0.7rem;
-            transition: max-height 0.35s ease;
         }
 
         nav a {
-            color: white;
+            color: var(--texto-oscuro);
             text-decoration: none;
             font-weight: 500;
-            padding: 0.7rem 1rem;
-            border-radius: var(--radio-borde);
-            transition: all 0.25s ease;
-            display: inline-block;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: var(--transition);
         }
 
-        nav a:hover, nav a:focus {
-            background-color: var(--verde-claro);
-            outline: none;
+        nav a:hover, nav ul li.active a {
+            background-color: rgba(46, 125, 50, 0.08);
+            color: var(--verde-principal);
         }
 
-        /* ---------- ESTILOS GENERALES SECCIONES ---------- */
+        /* -------------------------- SECCIONES COMPARTIDAS -------------------------- */
         section {
-            margin-bottom: 3rem;
-            padding: 2rem 1.8rem;
-            background: rgba(255, 255, 255, 0.94);
-            border-radius: var(--radio-borde);
-            box-shadow: var(--sombra-ligera);
-            border-left: 5px solid var(--verde-principal);
+            padding: 3.5rem 0;
+        }
+
+        .section-card {
+            background: var(--blanco);
+            padding: 3rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(46, 125, 50, 0.05);
         }
 
         .titulo-seccion {
-            color: var(--verde-principal);
-            font-size: clamp(1.5rem, 3vw, 1.8rem);
-            padding-bottom: 0.7rem;
-            border-bottom: 2px solid var(--verde-suave);
-            margin-bottom: 1.7rem;
+            color: var(--verde-oscuro);
+            font-size: 2rem;
+            font-weight: 700;
             text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
         }
 
-        .subtitulo {
-            text-align: center;
-            color: var(--texto-secundario);
-            margin-bottom: 1.5rem;
+        .titulo-seccion::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--verde-claro);
+            margin: 0.6rem auto 0;
+            border-radius: 2px;
         }
 
-        /* ---------- SECCIÓN: PROFESIONAL + DIPLOMAS ---------- */
-        #profesional {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: flex-start;
-            justify-content: center;
+        /* -------------------------- SECCIÓN PROFESIONAL -------------------------- */
+        .profesional-grid {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profesional-left {
+            text-align: center;
         }
 
         .foto-profesional {
-            width: 190px;
-            height: 190px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             border-radius: 50%;
-            border: 4px solid var(--verde-suave);
-            box-shadow: var(--sombra-ligera);
+            border: 6px solid var(--blanco);
+            box-shadow: var(--shadow-lg);
         }
 
-        .datos-profesional {
-            flex: 1;
-            min-width: 280px;
-            font-size: 1.05rem;
+        .info-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1.5rem;
         }
 
-        .datos-profesional p {
-            margin: 0.5rem 0;
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--verde-fondo);
+            padding: 1rem;
+            border-radius: 8px;
         }
 
-        /* 📜 Certificaciones */
+        .info-item i {
+            color: var(--verde-principal);
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
         .galeria-diplomas {
-            width: 100%;
-            margin-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding-top: 2.5rem;
         }
+
         .galeria-diplomas h3 {
             text-align: center;
-            color: var(--verde-principal);
-            margin-bottom: 1.2rem;
-            font-size: 1.3rem;
+            color: var(--texto-oscuro);
+            margin-bottom: 2rem;
         }
-        .contenedor-diplomas {
+
+        .diplomas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            gap: 1.4rem;
-            justify-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
         }
+
         .diploma {
             width: 100%;
-            max-width: 270px;
-            border: 3px solid var(--borde-suave);
-            border-radius: var(--radio-borde);
-            box-shadow: var(--sombra-ligera);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
             cursor: pointer;
-        }
-        .diploma:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--sombra-media);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* ---------- CITA / AVISO DESTACADO ---------- */
+        .diploma:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* -------------------------- AGENDA CTA -------------------------- */
         .agenda-cita {
             background: linear-gradient(135deg, var(--verde-principal), var(--verde-claro));
-            color: white;
-            padding: 1.3rem;
-            border-radius: var(--radio-borde);
+            color: var(--blanco);
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius);
             text-align: center;
-            margin: 2rem 0;
-            font-size: 1.15rem;
-            font-weight: 500;
-            box-shadow: var(--sombra-media);
+            margin: 3rem 0;
+            box-shadow: var(--shadow-lg);
         }
 
-        /* ---------- GALERÍA Y VIDEOS ---------- */
+        .agenda-cita h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--blanco);
+            color: var(--verde-oscuro);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        /* -------------------------- ELABORACIÓN -------------------------- */
+        .elaboracion-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
         .galeria-instalaciones {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.6rem;
-            margin-top: 1.5rem;
-            justify-items: center;
-        }
-        .galeria-instalaciones video, .galeria-instalaciones img {
-            width: 100%;
-            max-width: 440px;
-            height: auto;
-            border-radius: var(--radio-borde);
-            box-shadow: var(--sombra-ligera);
-            border: 2px solid var(--borde-suave);
-        }
-        .galeria-instalaciones p {
-            text-align:center; margin-top:0.6rem; color: var(--texto-secundario); font-size:0.95rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
         }
 
-        /* ---------- AVISO LEGAL ---------- */
-        #aviso {
-            background: rgba(232, 245, 233, 0.94);
-            border-left: 5px solid var(--naranja-acento);
-            padding: 1.6rem 2rem;
-            margin-bottom: 2.5rem;
-            border-radius: var(--radio-borde);
+        .media-container {
+            background: var(--verde-fondo);
+            padding: 1rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
         }
-        #aviso h3 {
-            color: #e67700;
+
+        .galeria-instalaciones video, .galeria-instalaciones img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .media-container p {
             text-align: center;
+            margin-top: 0.8rem;
+            font-weight: 500;
+            color: var(--verde-oscuro);
+        }
+
+        /* -------------------------- AVISO LEGAL -------------------------- */
+        #aviso {
+            background: rgba(230, 81, 0, 0.04);
+            border-left: 4px solid var(--naranja-alerta);
+            padding: 2rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 3rem 0;
+        }
+
+        #aviso h3 {
+            color: var(--naranja-alerta);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* -------------------------- PRODUCTOS -------------------------- */
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .tarjeta-producto {
+            background: var(--blanco);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: var(--transition);
+        }
+
+        .tarjeta-producto:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .producto-img-box {
+            background: var(--verde-fondo);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .producto-img-box img {
+            height: 150px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+        }
+
+        .producto-info {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .producto-info h3 {
+            color: var(--verde-oscuro);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
             margin-bottom: 1rem;
         }
 
-        /* ---------- PRODUCTOS ---------- */
-        .grid-productos {
+        .tag {
+            background: rgba(46, 125, 50, 0.08);
+            color: var(--verde-principal);
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .producto-info ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .producto-info li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .producto-info li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--verde-claro);
+            font-weight: bold;
+        }
+
+        .info-cientifica {
+            background: var(--verde-fondo);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--texto-mutado);
+            margin-top: auto;
+            border-left: 3px solid var(--verde-principal);
+        }
+
+        .btn-producto-contacto {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--verde-principal);
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 500;
+            margin-top: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .btn-producto-contacto:hover {
+            background: var(--verde-oscuro);
+        }
+
+        /* -------------------------- TESTIMONIOS -------------------------- */
+        .grid-testimonios {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
-        .tarjeta-producto {
-            background: rgba(255,255,255,0.96);
-            border-radius: var(--radio-borde);
-            box-shadow: var(--sombra-ligera);
-            padding: 1.8rem;
-            border-top: 5px solid var(--verde-principal);
-            transition: transform 0.25s ease;
-        }
-        .tarjeta-producto:hover { transform: translateY(-5px); }
-        .tarjeta-producto h3 {
-            color: var(--verde-principal); text-align:center; padding-bottom:0.7rem; border-bottom:2px solid var(--verde-suave); margin-bottom:1rem;
-        }
-        .galeria { display:flex; justify-content:center; gap:0.8rem; flex-wrap:wrap; margin-bottom:1rem; }
-        .galeria img { max-width:210px; width:100%; border-radius:var(--radio-borde); border:2px solid var(--borde-suave); }
-        .datos ul { padding-left:1.6rem; margin:1rem 0; }
-        .info-cientifica { background:var(--verde-suave); padding:1rem; border-radius:var(--radio-borde); border-left:4px solid var(--verde-claro); margin:1.2rem 0; }
-        .contacto-producto { display:block; background:var(--verde-principal); color:white; text-align:center; padding:0.8rem; border-radius:var(--radio-borde); text-decoration:none; font-weight:500; margin-top:0.8rem; transition:background 0.2s; }
-        .contacto-producto:hover { background:var(--verde-oscuro); }
 
-        /* ---------- TESTIMONIOS ---------- */
-        .grid-testimonios {
+        .tarjeta-testimonio {
+            background: var(--blanco);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-sm);
+            border-top: 4px solid var(--verde-claro);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .estrellas {
+            color: #ffb300;
+        }
+
+        .texto-testimonio {
+            font-style: italic;
+            color: var(--texto-mutado);
+        }
+
+        .nombre-cliente {
+            font-weight: 600;
+            color: var(--texto-oscuro);
+            font-size: 0.95rem;
+            margin-top: auto;
+        }
+
+        /* -------------------------- CONTACTO -------------------------- */
+        .contacto-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap:1.8rem;
+            gap: 2rem;
         }
-        .tarjeta-testimonio {
-            background:#fff; border-radius:var(--radio-borde); padding:1.6rem; box-shadow:var(--sombra-ligera); border-top:4px solid var(--verde-claro); text-align:center; transition:transform 0.25s;
+
+        /* -------------------------- REDES FLOTANTES -------------------------- */
+        .redes-sociales {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1010;
         }
-        .tarjeta-testimonio:hover { transform:translateY(-4px); }
-        .estrellas { color:var(--naranja-acento); font-size:1.1rem; margin-bottom:0.8rem; }
-        .texto-testimonio { font-style:italic; color:var(--texto-secundario); margin-bottom:1rem; }
-        .nombre-cliente { font-weight:bold; color:var(--verde-principal); }
 
-        /* ---------- CONTACTO ---------- */
-        #contacto p { margin:0.6rem 0; font-size:1.05rem; }
+        .redes-sociales a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--blanco);
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
 
-        /* ---------- BOTONES FIJOS ---------- */
-        .btn-whatsapp { position:fixed; bottom:22px; right:22px; background:#25d366; color:white; width:62px; height:62px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; box-shadow:var(--sombra-media); z-index:999; transition:transform 0.2s; }
-        .btn-whatsapp:hover { transform:scale(1.08); }
-        .redes-sociales { position:fixed; bottom:95px; right:22px; display:flex; flex-direction:column; gap:12px; z-index:998; }
-        .redes-sociales a { width:50px; height:50px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; font-size:24px; text-decoration:none; box-shadow:var(--sombra-ligera); transition:transform 0.2s; }
-        .redes-sociales a:hover { transform:scale(1.08); }
-        .facebook { background:#1877f2; }
-        .instagram { background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-        .tiktok { background:#000; }
+        .redes-sociales a:hover {
+            transform: scale(1.1) translateY(-2px);
+        }
 
-        /* ---------- PIE DE PÁGINA ---------- */
-        footer { background:var(--verde-suave); color:var(--verde-principal); padding:1rem 1.5rem; text-align:center; font-weight:500; }
-        .redes-footer { display:flex; justify-content:center; gap:0.8rem; margin:0.6rem 0; flex-wrap:wrap; }
-        .redes-footer a { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; text-decoration:none; font-size:17px; }
-        .info-desarrollador { font-size:0.9rem; margin-top:0.4rem; color:#424242; }
+        .whatsapp { background-color: #25d366; }
+        .facebook { background-color: #1877f2; }
+        .instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .tiktok { background-color: #000000; }
 
-        /* ---------- EFECTO ESCRITURA ---------- */
-        .texto-escritura { font-size: clamp(1.1rem, 2vw, 1.3rem); font-weight:500; margin:0.4rem 0; position:relative; display:inline-block; min-height:1.7rem; }
-        .texto-escritura::after { content:"|"; margin-left:2px; animation: parpadeo 0.7s infinite; }
-        @keyframes parpadeo { 0%,100%{opacity:1;}50%{opacity:0;} }
-        .texto-escritura.header { color:#fff; }
-        .texto-escritura.normal { color:var(--verde-principal); }
+        /* -------------------------- FOOTER COMPACTO -------------------------- */
+        footer {
+            background: var(--texto-oscuro);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
 
-        /* ---------- RESPONSIVE: MÓVILES ---------- */
-        @media (max-width:768px) {
-            .menu-boton { display:block; }
-            nav ul { flex-direction:column; gap:0; max-height:0; overflow:hidden; padding:0; }
-            nav ul.activo { max-height:320px; padding:0.5rem; }
-            nav ul li a { display:block; padding:0.9rem; border-top:1px solid var(--verde-claro); border-radius:0; }
-            #profesional { text-align:center; }
-            .galeria-diplomas .contenedor-diplomas { grid-template-columns: repeat(auto-fit, minmax(140px,1fr)); }
-            .grid-productos, .grid-testimonios { grid-template-columns:1fr; }
-            .galeria-instalaciones { grid-template-columns:1fr; }
-            .contenedor-principal { padding:1.5rem 1rem; }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-content p {
+            font-size: 0.9rem;
+        }
+
+        .redes-footer {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .redes-footer a {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .redes-footer a:hover {
+            color: var(--blanco);
+        }
+
+        /* -------------------------- TEXTO ESCRITURA -------------------------- */
+        .texto-escritura {
+            font-weight: 400;
+            min-height: 1.4rem;
+            display: inline-block;
+        }
+        .texto-escritura::after {
+            content: "|";
+            animation: parpadeo 0.7s infinite;
+        }
+        @keyframes parpadeo {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .texto-escritura.header { color: #b9f6ca; font-size: 0.95rem; }
+        .texto-escritura.normal { color: var(--verde-principal); font-size: 1.1rem;}
+
+        /* -------------------------- MEDIA QUERIES -------------------------- */
+        @media (max-width: 992px) {
+            .profesional-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .profesional-left {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+            .header-right {
+                display: none;
+            }
+            .section-card { padding: 1.5rem; }
+            
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-brand {
+                display: block;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--blanco);
+                flex-direction: column;
+                gap: 0;
+                box-shadow: var(--shadow-md);
+                max-height: 0;
+                overflow: hidden;
+                transition: var(--transition);
+            }
+
+            nav ul.active {
+                max-height: 350px;
+                border-top: 1px solid rgba(0,0,0,0.05);
+            }
+
+            nav a {
+                display: block;
+                padding: 1rem 1.5rem;
+                border-radius: 0;
+            }
+            
+            .grid-productos {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="logo-homeovida.png" alt="Logo Homeovida" class="logo-encabezado">
-    <div class="texto-encabezado">
-        <h1>Homeovida</h1>
-        <p>Salud Natural en Casa</p>
+    <div class="header-content">
+        <div class="header-left">
+            <img src="logo-homeovida.png" alt="Logo Homeovida" class="logo-encabezado">
+            <div class="texto-encabezado">
+                <h1>Homeovida</h1>
+                <p>Salud Natural en Casa</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="texto-escritura header" data-texto="Tu aliado en bienestar integral y salud natural"></div>
+        </div>
     </div>
-    <div><p class="texto-escritura header" data-texto="Tu aliado confiable en bienestar integral • Villavicencio, Meta"></p></div>
 </header>
 
 <nav>
-    <button class="menu-boton" id="btnMenu">☰ Menú</button>
-    <ul id="menuPrincipal">
-        <li><a href="#profesional">Profesional</a></li>
-        <li><a href="#elaboracion">Elaboración</a></li>
-        <li><a href="#productos">Productos</a></li>
-        <li><a href="#testimonios">Experiencias</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-    </ul>
+    <div class="container nav-container">
+        <a href="#" class="nav-brand">Homeovida</a>
+        <button class="menu-toggle" id="menuBtn" aria-label="Abrir menú"><i class="fa-solid fa-bars"></i></button>
+        <ul id="menuLista">
+            <li><a href="#profesional">Profesional</a></li>
+            <li><a href="#elaboracion">Elaboración Propia</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </div>
 </nav>
 
-<div class="contenedor-principal">
+<div class="container">
 
+    <!-- PROFESIONAL -->
     <section id="profesional">
-        <img src="foto-profesional.jpg" alt="Foto del profesional de la salud" class="foto-profesional">
-        <div class="datos-profesional">
+        <div class="section-card">
             <h2 class="titulo-seccion">Profesional de la Salud</h2>
-            <p><strong>Nombre:</strong> Dr. / Dra. [Tu nombre completo]</p>
-            <p><strong>Especialidad:</strong> Medicina Natural y Terapias Complementarias</p>
-            <p><strong>Registro Profesional:</strong> [Número de registro]</p>
-            <p><strong>Ubicación:</strong> Villavicencio, Meta — Colombia</p>
-            <p><strong>Teléfonos:</strong> 310 689 5103 • 322 703 6371</p>
-            <p><strong>Atención:</strong> Lunes a sábado • 8:00 AM — 6:00 PM</p>
-        </div>
-        <div class="galeria-diplomas">
-            <h3>📜 Formación y Certificaciones</h3>
-            <div class="contenedor-diplomas">
-                <img src="diploma1.jpg" alt="Diploma principal" class="diploma" loading="lazy">
-                <img src="diploma2.jpg" alt="Certificado especialización" class="diploma" loading="lazy">
-                <img src="diploma3.jpg" alt="Curso complementario" class="diploma" loading="lazy">
+            <div class="profesional-grid">
+                <div class="profesional-left">
+                    <img src="foto-profesional.jpg" alt="Foto del profesional" class="foto-profesional">
+                </div>
+                <div class="profesional-right">
+                    <div class="info-list">
+                        <div class="info-item"><i class="fa-solid fa-user-doctor"></i> <span><strong>Nombre:</strong> Dr. / Dra. [Tu nombre aquí]</span></div>
+                        <div class="info-item"><i class="fa-solid fa-stethoscope"></i> <span><strong>Especialidad:</strong> Medicina Natural</span></div>
+                        <div class="info-item"><i class="fa-solid fa-id-card"></i> <span><strong>Registro:</strong> [Tu número de registro]</span></div>
+                        <div class="info-item"><i class="fa-solid fa-location-dot"></i> <span><strong>Ubicación:</strong> Villavicencio, Meta</span></div>
+                        <div class="info-item"><i class="fa-solid fa-phone"></i> <span><strong>Teléfonos:</strong> 310 689 5103 • 322 703 6371</span></div>
+                        <div class="info-item"><i class="fa-solid fa-clock"></i> <span><strong>Horario:</strong> Lunes a Sábado 8am - 6pm</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="galeria-diplomas">
+                <h3>Formación y Certificaciones</h3>
+                <div class="diplomas-grid">
+                    <img src="diploma1.jpg" alt="Diploma" class="diploma">
+                    <img src="diploma2.jpg" alt="Certificado" class="diploma">
+                    <img src="diploma3.jpg" alt="Diploma" class="diploma">
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="agenda-cita">📅 Agenda tu valoración personalizada y empieza tu camino al bienestar</div>
+    <!-- CTA AGENDA -->
+    <div class="agenda-cita">
+        <h3>¿Listo para mejorar tu calidad de vida?</h3>
+        <p>Agenda hoy mismo tu consulta personalizada para un enfoque natural de tu bienestar.</p>
+        <a href="https://wa.me/573106895103?text=Hola,%20deseo%20agendar%20una%20cita" target="_blank" class="btn-cta">
+            <i class="fa-solid fa-calendar-check"></i> Agendar Cita Personalizada
+        </a>
+    </div>
 
+    <!-- ELABORACIÓN -->
     <section id="elaboracion">
-        <h2 class="titulo-seccion">Elaboración Propia</h2>
-        <p class="subtitulo">Procesos cuidadosos, normas estrictas y materia prima seleccionada</p>
-        <p style="margin-bottom:1.5rem;">Todo se elabora artesanalmente conservando al máximo las propiedades naturales, bajo condiciones higiénicas y control de calidad, garantizando seguridad y confianza.</p>
-        <div class="galeria-instalaciones">
-            <div>
-                <video src="video-elaboracion.mp4" controls preload="none">Tu navegador no admite video</video>
-                <p>Proceso paso a paso</p>
+        <div class="section-card">
+            <h2 class="titulo-seccion">Elaboración Propia</h2>
+            <div class="elaboracion-header">
+                <div class="texto-escritura normal" data-texto="Cuidamos cada paso para conservar todas las propiedades de lo natural"></div>
+                <p style="margin-top: 1rem; color: var(--texto-mutado)">Todos nuestros productos son elaborados artesanalmente bajo estrictas normas de higiene y control de calidad. Seleccionamos materias primas 100% naturales para conservar todas sus propiedades activas y garantizar un producto seguro.</p>
             </div>
-            <div>
-                <video src="productos.mp4" controls preload="none">Tu navegador no admite video</video>
-                <p>Resultado final y presentación</p>
+            <div class="galeria-instalaciones">
+                <div class="media-container">
+                    <video src="video-elaboracion.mp4" controls></video>
+                    <p>Proceso de Elaboración</p>
+                </div>
+                <div class="media-container">
+                    <video src="productos.mp4" controls></video>
+                    <p>Nuestros Productos</p>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- AVISO LEGAL -->
     <section id="aviso">
-        <h3>Aviso Legal y Normativo</h3>
-        <p>Estos productos son suplementos alimenticios naturales según la normativa colombiana vigente <strong>Decreto 1737 de 2011</strong>. No constituyen medicamentos, no sustituyen consulta, diagnóstico ni tratamiento médico. No están diseñados para curar, tratar o prevenir enfermedades. Consulte siempre a su profesional de salud antes de consumirlos; especialmente en embarazo, lactancia o tratamientos médicos.</p>
+        <h3><i class="fa-solid fa-triangle-exclamation"></i> Aviso Informativo Importante</h3>
+        <p>Estos productos son suplementos alimenticios naturales, no constituyen medicamentos ni sustituyen el diagnóstico o tratamiento médico profesional. No están destinados a curar, tratar o prevenir enfermedades. En Colombia se rigen por el Decreto 1737 de 2011. Consulta siempre a tu médico antes de iniciar cualquier suplementación.</p>
     </section>
 
+    <!-- PRODUCTOS -->
     <section id="productos">
-        <h2 class="titulo-seccion">Nuestra Línea Natural</h2>
-        <p class="subtitulo"><p class="texto-escritura normal" data-texto="Ingredientes 100% naturales, fórmulas diseñadas pensando en tu bienestar"></p></p>
+        <h2 class="titulo-seccion">Nuestros Productos Naturales</h2>
+        
         <div class="grid-productos">
-            <!-- Cúrcuma -->
+            <!-- CURCUMINA -->
             <div class="tarjeta-producto">
-                <h3>Curcumina + Curcuminoides</h3>
-                <div class="galeria"><img src="04_producto_capsulas.png" alt="Cúrcuma" loading="lazy"><img src="03_producto_sobres.png" alt="Formato sobre" loading="lazy"></div>
-                <div class="datos">
-                    <p>Extracto estandarizado de alta concentración.</p>
-                    <ul><li>Apoyo inflamatorio y articular</li><li>Potente antioxidante celular</li><li>Formato: polvo, sobres o cápsulas</li><li>Conservación: lugar fresco y protegido</li></ul>
+                <div class="producto-img-box">
+                    <img src="04_producto_capsulas.png" alt="Cúrcuma">
+                    <img src="03_producto_sobres.png" alt="Cúrcuma">
                 </div>
-                <div class="info-cientifica"><strong>Base:</strong> compuesto activo de la cúrcuma, con evidencia científica en cuidado articular y bienestar general.</div>
-                <a href="https://wa.me/573106895103?text=Información+Curcumina" class="contacto-producto">Más información por WhatsApp</a>
+                <div class="producto-info">
+                    <h3>Curcumina + Curcuminoides</h3>
+                    <div class="tag-list">
+                        <span class="tag">Antioxidante</span>
+                        <span class="tag">Antiinflamatorio</span>
+                    </div>
+                    <p style="color: var(--texto-mutado); font-size: 0.95rem">Suplemento natural elaborado con extracto estandarizado de cúrcuma de la mejor calidad.</p>
+                    <ul>
+                        <li>Ayuda en procesos inflamatorios, artritis y artrosis.</li>
+                        <li>Potente acción antioxidante natural.</li>
+                        <li>Formatos: Polvo, sobres o cápsulas.</li>
+                    </ul>
+                    <div class="info-cientifica">
+                        La curcumina es el compuesto activo principal de la cúrcuma, reconocido científicamente por aliviar molestias articulares.
+                    </div>
+                    <a href="https://wa.me/573106895103?text=Me%20interesa%20la%20Curcumina" target="_blank" class="btn-producto-contacto">
+                        <i class="fa-brands fa-whatsapp"></i> Preguntar por WhatsApp
+                    </a>
+                </div>
             </div>
-            <!-- Ajo -->
+
+            <!-- AJO -->
             <div class="tarjeta-producto">
-                <h3>Ajo Natural</h3>
-                <div class="galeria"><img src="01_ajo.png" alt="Ajo" loading="lazy"></div>
-                <div class="datos">
-                    <p>Concentrado obtenido de materias primas seleccionadas.</p>
-                    <ul><li>Favorece salud cardiovascular</li><li>Apoyo en niveles de colesterol y circulación</li><li>Formato: cápsulas o extracto</li><li>Conservación: ambiente fresco y seco</li></ul>
+                <div class="producto-img-box">
+                    <img src="01_ajo.png" alt="Ajo natural">
                 </div>
-                <div class="info-cientifica"><strong>Principio activo:</strong> Alicina y compuestos azufrados de acción reconocida para el sistema circulatorio.</div>
-                <a href="https://wa.me/573106895103?text=Información+Ajo" class="contacto-producto">Más información por WhatsApp</a>
+                <div class="producto-info">
+                    <h3>Ajo Concentrado</h3>
+                    <div class="tag-list">
+                        <span class="tag">Cardiovascular</span>
+                        <span class="tag">Circulación</span>
+                    </div>
+                    <p style="color: var(--texto-mutado); font-size: 0.95rem">Suplemento natural elaborado con ajo seleccionado procesado en frío.</p>
+                    <ul>
+                        <li>Ayuda a regular tensión arterial y colesterol.</li>
+                        <li>Protege la salud cardiovascular de forma constante.</li>
+                        <li>Formatos: Cápsulas o extracto puro.</li>
+                    </ul>
+                    <div class="info-cientifica">
+                        Contiene alicina, compuesto biológico clave que favorece el torrente sanguíneo óptimo y reduce riesgos cardíacos.
+                    </div>
+                    <a href="https://wa.me/573106895103?text=Me%20interesa%20el%20Ajo" target="_blank" class="btn-producto-contacto">
+                        <i class="fa-brands fa-whatsapp"></i> Preguntar por WhatsApp
+                    </a>
+                </div>
             </div>
-            <!-- Anamú -->
+
+            <!-- ANAMÚ -->
             <div class="tarjeta-producto">
-                <h3>Anamú</h3>
-                <div class="galeria"><img src="02_planta.png" alt="Anamú" loading="lazy"></div>
-                <div class="datos">
-                    <p>Planta medicinal tradicionalmente valorada.</p>
-                    <ul><li>Apoyo defensas y sistema inmune</li><li>Efecto limpiador y antiinflamatorio natural</li><li>Formato: polvo o cápsulas</li><li>Conservación: protegido de humedad</li></ul>
+                <div class="producto-img-box">
+                    <img src="02_planta.png" alt="Planta Anamú">
                 </div>
-                <div class="info-cientifica"><strong>Uso tradicional:</strong> apoyo ante procesos infecciosos y fortalecimiento del organismo.</div>
-                <a href="https://wa.me/573106895103?text=Información+Anamú" class="contacto-producto">Más información por WhatsApp</a>
+                <div class="producto-info">
+                    <h3>Anamú</h3>
+                    <div class="tag-list">
+                        <span class="tag">Sistema Inmune</span>
+                        <span class="tag">Defensas</span>
+                    </div>
+                    <p style="color: var(--texto-mutado); font-size: 0.95rem">Complemento natural de alta pureza derivado de la planta medicinal Anamú.</p>
+                    <ul>
+                        <li>Acción antioxidante y apoyo inmunitario general.</li>
+                        <li>Propiedades antiparasitarias tradicionales.</li>
+                        <li>Formatos: Polvo o cápsulas herméticas.</li>
+                    </ul>
+                    <div class="info-cientifica">
+                        Planta ancestralmente utilizada en Sudamérica para robustecer las respuestas defensivas del organismo ante infecciones.
+                    </div>
+                    <a href="https://wa.me/573106895103?text=Me%20interesa%20el%20Anamu" target="_blank" class="btn-producto-contacto">
+                        <i class="fa-brands fa-whatsapp"></i> Preguntar por WhatsApp
+                    </a>
+                </div>
             </div>
-            <!-- Maní + Magnesio -->
+
+            <!-- MANÍ + MAGNESIO -->
             <div class="tarjeta-producto">
-                <h3>Maní + Sales de Magnesio</h3>
-                <div class="galeria"><img src="mani2.png" alt="Mezcla nutritiva" loading="lazy"></div>
-                <div class="datos">
-                    <p>Mezcla equilibrada para nutrición y relajación.</p>
-                    <ul><li>Fortalece huesos, músculos y sistema nervioso</li><li>Reduce calambres, fatiga y cansancio</li><li>Apoyo al sistema inmune y energía</li><li>Formato: polvo o sobres</li></ul>
+                <div class="producto-img-box">
+                    <img src="mani2.png" alt="Maní y Sales de Magnesio">
                 </div>
-                <div class="info-cientifica"><strong>Base:</strong> magnesio indispensable para cientos de funciones corporales, acompañado de nutrientes y proteínas vegetales.</div>
-                <a href="https://wa.me/573106895103?text=Información+Maní+Magnesio" class="contacto-producto">Más información por WhatsApp</a>
+                <div class="producto-info">
+                    <h3>Maní + Sales de Magnesio</h3>
+                    <div class="tag-list">
+                        <span class="tag">Vitalidad</span>
+                        <span class="tag">Muscular</span>
+                    </div>
+                    <p style="color: var(--texto-mutado); font-size: 0.95rem">Mezcla natural perfectamente equilibrada para deportistas y adultos mayores.</p>
+                    <ul>
+                        <li>Fortalece el sistema muscular y óseo.</li>
+                        <li>Reduce activamente la fatiga y molestos calambres.</li>
+                        <li>Formatos: Práctico polvo o en sobres individuales.</li>
+                    </ul>
+                    <div class="info-cientifica">
+                        El magnesio interviene en más de 300 funciones metabólicas; emparejado con el maní aporta proteínas vegetales vitales.
+                    </div>
+                    <a href="https://wa.me/573106895103?text=Me%20interesa%20el%20Mani%20con%20Magnesio" target="_blank" class="btn-producto-contacto">
+                        <i class="fa-brands fa-whatsapp"></i> Preguntar por WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- TESTIMONIOS -->
     <section id="testimonios">
-        <h2 class="titulo-seccion">Lo que dicen nuestros usuarios</h2>
-        <div class="grid-testimonios">
-            <div class="tarjeta-testimonio"><div class="estrellas">★★★★★</div><p class="texto-testimonio">Mejoró notablemente la movilidad y molestias en articulaciones. Muy buen trato y seguimiento.</p><p class="nombre-cliente">María G.</p></div>
-            <div class="tarjeta-testimonio"><div class="estrellas">★★★★★</div><p class="texto-testimonio">El suplemento de magnesio ayudó mucho a descansar y quitar calambres nocturnos. Muy recomendado.</p><p class="nombre-cliente">Carlos M.</p></div>
-            <div class="tarjeta-testimonio"><div class="estrellas">★★★★★</div><p class="texto-testimonio">Transparencia, normas claras y elaboración muy cuidada. Confianza total.</p><p class="nombre-cliente">Ana R.</p></div>
+        <div class="section-card">
+            <h2 class="titulo-seccion">Lo que dicen nuestros clientes</h2>
+            <div class="grid-testimonios">
+                <div class="tarjeta-testimonio">
+                    <div class="estrellas">★★★★★</div>
+                    <p class="texto-testimonio">"Llevo tres meses usando la curcumina y he notado una gran mejoría en mis dolores articulares. Excelente producto."</p>
+                    <p class="nombre-cliente">— María González</p>
+                </div>
+                <div class="tarjeta-testimonio">
+                    <div class="estrellas">★★★★★</div>
+                    <p class="texto-testimonio">"El complemento de maní con magnesio me ayudó mucho con los calambres nocturnos. Es natural y súper efectivo."</p>
+                    <p class="nombre-cliente">— Carlos Méndez</p>
+                </div>
+                <div class="tarjeta-testimonio">
+                    <div class="estrellas">★★★★★</div>
+                    <p class="texto-testimonio">"La atención es muy personalizada y los productos son elaborados con cuidado. Me siento con más energía desde que los tomo."</p>
+                    <p class="nombre-cliente">— Ana Ruiz</p>
+                </div>
+            </div>
         </div>
     </section>
 
+    <!-- CONTACTO -->
     <section id="contacto">
-        <h2 class="titulo-seccion">Contáctanos</h2>
-        <p><strong>Marca:</strong> Homeovida • Salud Natural</p>
-        <p><strong>Teléfonos / WhatsApp:</strong> 310 689 5103 — 322 703 6371</p>
-        <p><strong>Dirección:</strong> Villavicencio, Meta — Colombia</p>
-        <p><strong>Correo:</strong> [Tu correo aquí]</p>
-        <p><strong>Horario:</strong> Lunes a sábado • 8:00 AM — 6:00 PM</p>
+        <div class="section-card">
+            <h2 class="titulo-seccion">Contáctanos</h2>
+            <div class="contacto-container">
+                <div>
+                    <h3 style="margin-bottom:1rem; color:var(--verde-oscuro)">Información General</h3>
+                    <p style="margin-bottom:0.5rem"><strong>Marca:</strong> Homeovida - Salud Natural</p>
+                    <p style="margin-bottom:0.5rem"><strong>Ubicación:</strong> Villavicencio, Meta - Colombia</p>
+                    <p style="margin-bottom:0.5rem"><strong>Correo electrónico:</strong> [Tu correo aquí]</p>
+                    <p style="margin-bottom:0.5rem"><strong>Horario:</strong> Lunes a Sábado de 8:00 AM a 6:00 PM</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom:1rem; color:var(--verde-oscuro)">Atención Directa</h3>
+                    <p style="margin-bottom:0.5rem"><i class="fa-solid fa-phone" style="color:var(--verde-claro)"></i> 310 689 5103</p>
+                    <p style="margin-bottom:0.5rem"><i class="fa-solid fa-phone" style="color:var(--verde-claro)"></i> 322 703 6371</p>
+                </div>
+            </div>
+        </div>
     </section>
 
 </div>
 
-<!-- Botones fijos -->
-<a href="https://wa.me/573106895103?text=Hola+Homeovida" class="btn-whatsapp" target="_blank" title="Escribir ahora"><i class="fa-brands fa-whatsapp"></i></a>
+<!-- REDES FLOTANTES -->
 <div class="redes-sociales">
+    <a href="https://wa.me/573106895103?text=Hola,%20me%20interesan%20los%20productos%20de%20Homeovida" target="_blank" class="whatsapp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     <a href="https://facebook.com/TU_PAGINA" target="_blank" class="facebook" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
     <a href="https://instagram.com/TU_PERFIL" target="_blank" class="instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
     <a href="https://tiktok.com/@TU_USUARIO" target="_blank" class="tiktok" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
 </div>
 
 <footer>
-    <p>&copy; 2026 Homeovida — Salud Natural • Todos los derechos reservados</p>
-    <p class="texto-escritura" data-texto="Atendemos en Villavicencio • Confianza y tradición natural"></p>
-    <div class="redes-footer">
-        <a href="https://wa.me/573106895103" class="red-footer-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://facebook.com/TU_PAGINA" class="red-footer-facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a href="https://instagram.com/TU_PERFIL" class="red-footer-instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://tiktok.com/@TU_USUARIO" class="red-footer-tiktok"><i class="fa-brands fa-tiktok"></i></a>
+    <div class="container footer-content" style="justify-content: center;">
+        <p>&copy; 2026 Homeovida - Salud Natural | Todos los derechos reservados</p>
     </div>
-    
 </footer>
 
 <script>
-// Menú desplegable
-const btnMenu = document.getElementById('btnMenu');
-const menuPrincipal = document.getElementById('menuPrincipal');
-const enlacesMenu = menuPrincipal.querySelectorAll('a');
-
-btnMenu.addEventListener('click', () => menuPrincipal.classList.toggle('activo'));
-enlacesMenu.forEach(enlace => enlace.addEventListener('click', () => menuPrincipal.classList.remove('activo')));
-
-// Efecto escritura
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".texto-escritura").forEach(el => {
-        const texto = el.getAttribute("data-texto");
-        let i = 0;
-        const vel = 42;
-        const pausa = 3200;
-        function escribir() {
-            if(i < texto.length){ el.textContent = texto.substring(0,++i); setTimeout(escribir,vel); }
-            else { setTimeout(()=>{i=0;el.textContent="";escribir();},pausa); }
+    // Lógica del menú Responsive Hamburguesa
+    const menuBtn = document.getElementById('menuBtn');
+    const menuLista = document.getElementById('menuLista');
+    
+    menuBtn.addEventListener('click', () => {
+        menuLista.classList.toggle('active');
+        const icon = menuBtn.querySelector('i');
+        if(menuLista.classList.contains('active')) {
+            icon.classList.replace('fa-bars', 'fa-xmark');
+        } else {
+            icon.classList.replace('fa-xmark', 'fa-bars');
         }
-        escribir();
     });
-});
-</script>
 
+    document.querySelectorAll('#menuLista a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuLista.remove('active');
+            menuBtn.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
+        });
+    });
+
+    // Efecto Máquina de Escribir Arreglado
+    document.addEventListener("DOMContentLoaded", function() {
+        const elementos = document.querySelectorAll(".texto-escritura");
+        elementos.forEach(el => {
+            const texto = el.getAttribute("data-texto");
+            let i = 0;
+            function escribir() {
+                if (i < texto.length) {
+                    el.textContent = texto.substring(0, i + 1);
+                    i++;
+                    setTimeout(escribir, 45);
+                } else {
+                    setTimeout(() => {
+                        i = 0;
+                        el.textContent = "";
+                        escribir();
+                    }, 4000);
+                }
+            }
+            escribir();
+        });
+    });
+</script>
 </body>
 </html>
